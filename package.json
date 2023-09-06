@@ -12,7 +12,7 @@
 		"mocha": "^10.2.0"
 	},
 	"scripts": {
-		"test": "mocha -r esm"
+		"test": "mocha --timeout 15000"
 	},
 	"repository": {
 		"type": "git",
@@ -23,5 +23,9 @@
 	"bugs": {
 		"url": "https://github.com/SanjeetDutt/JEST-API-TESTING/issues"
 	},
-	"homepage": "https://github.com/SanjeetDutt/JEST-API-TESTING#readme"
+	"homepage": "https://github.com/SanjeetDutt/JEST-API-TESTING#readme",
+	"dependencies": {
+		"csv-reader": "^1.0.12",
+		"node-fetch": "^3.3.2"
+	}
 }
