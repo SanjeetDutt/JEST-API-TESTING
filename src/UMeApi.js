@@ -38,7 +38,7 @@ export default class UMeApi extends Api {
 
   }
 
-  seekValidationError(reporting, response) {
+  seekValidationError(reporting, response, successMessage) {
     const error = []
     response.sections.forEach(section => {
       section.enquiryLines.forEach(enquiryLine => {
@@ -51,8 +51,13 @@ export default class UMeApi extends Api {
       })
     })
 
-    reporting.addReport("error", error.length > 0 ? error : "FOUND 0 ERROR 🎉")
-    return error.length > 0
+    if (error.length > 0) {
+      reporting.addReport("error", error)
+      return true
+    } else {
+      reporting.addReport("message", successMessage)
+      return false
+    }
   }
 
   async postEnquiry(reporting) {
@@ -73,7 +78,7 @@ export default class UMeApi extends Api {
     try {
       const r = await super.post({ url, headers, body })
       reporting.addResponse(r)
-      const error = this.seekValidationError(reporting, r)
+      const error = this.seekValidationError(reporting, r, "Enquiry posted successfully")
       return !!error ? STATUS.ERROR : STATUS.OK
     } catch (e) {
       console.error("ENCOUNTER AN ERROR WHILE POSING AN ENQUIRY", e);
@@ -91,7 +96,7 @@ export default class UMeApi extends Api {
     try {
       const r = await super.post({ url, headers })
       reporting.addResponse(r)
-      const error = this.seekValidationError(reporting, r)
+      const error = this.seekValidationError(reporting, r, "Enquiry closed successfully")
       return !!error ? STATUS.ERROR : STATUS.OK
     } catch (e) {
       console.error("ENCOUNTER AN ERROR WHILE CLOSING AN ENQUIRY", e);
