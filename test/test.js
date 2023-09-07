@@ -3,6 +3,8 @@ import { getFilePath, parseCsvToObject, readCsv } from "../src/Utility.js"
 import _Config from "../src/_Config.js"
 import UMeApi from "../src/UMeApi.js"
 import { STATUS } from "../src/Api.js"
+import addContext from "mochawesome/addContext.js"
+import { Report } from "../src/data/Request.js"
 
 const readUmeTestCases = async () => {
   const fileLocation = getFilePath(_Config.UMeTestCaseFile)
@@ -40,29 +42,40 @@ cases.forEach((test, i) => {
   describe(`Test No. ${testNumber}: ${testName}`, async () => {
 
     if (_Config.debug) {
-      it("STARTING NEW ENQUIRY", async () => {
-        const response = await umeApi.startEnquiry()
+      it("STARTING NEW ENQUIRY", async function () {
+        const reporting = new Report(addContext, this)
+        const response = await umeApi.startEnquiry(reporting)
+        reporting.publishReport()
         assert.equal(response, STATUS.OK)
       })
 
-      it("POSTING ENQUIRY DATA", async () => {
-        const response = await umeApi.postEnquiry()
+      it("POSTING ENQUIRY DATA", async function () {
+        const reporting = new Report(addContext, this)
+        const response = await umeApi.postEnquiry(reporting)
+        reporting.publishReport()
         assert.equal(response, STATUS.OK)
       })
 
-      it("CLOSING ENQUIRY", async () => {
-        const response = await umeApi.closeEnquiry()
+      it("CLOSING ENQUIRY", async function () {
+        const reporting = new Report(addContext, this)
+        const response = await umeApi.closeEnquiry(reporting)
+        reporting.publishReport()
         assert.equal(response, STATUS.OK)
       })
 
-      it("EVALUATING ENQUIRY RESULT", async () => {
-        const response = await umeApi.enquiryResult()
+      it("EVALUATING ENQUIRY RESULT", async function () {
+        const reporting = new Report(addContext, this)
+        const response = await umeApi.enquiryResult(reporting)
+        reporting.publishReport()
         assert.equal(response, STATUS.OK)
       })
     } else {
-      it("TESTING TEST CASE #" + (i + 1), async () => {
-        const response = await umeApi.completeEnquiry()
+      it("TESTING TEST CASE #" + (i + 1), async function () {
+        const reporting = new Report(addContext, this, "Testing Enquiry")
+        const response = await umeApi.completeEnquiry(reporting)
+        reporting.publishReport()
         assert.equal(response, STATUS.OK)
+
       })
     }
 

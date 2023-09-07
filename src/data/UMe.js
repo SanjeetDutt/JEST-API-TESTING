@@ -13,13 +13,16 @@ export class UMe {
     this.enquiryId = null
 
     this.name = data[_Config.nameField]
-    _Config.startEnquiryFields.forEach(e => this.startEnquiryAnswer[e] = data[e])
-    _Config.commonEnquiryFields.forEach(e => this.enquiryAnswer[e] = data[e])
+    _Config.startEnquiryFields.forEach(e => data[e] && (this.startEnquiryAnswer[e] = data[e]))
+    _Config.commonEnquiryFields.forEach(e => data[e] && (this.enquiryAnswer[e] = data[e]))
 
     this.expectedResult = {}
 
     _Config.decisionColumns.forEach(key => {
-      this.expectedResult[key] = data[key][0]
+      if (data[key] && data[key].length > 0) {
+        this.expectedResult[key] = data[key][0]
+      }
+
     })
   }
 
