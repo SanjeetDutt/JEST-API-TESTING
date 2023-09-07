@@ -20,8 +20,6 @@ const readUmeTestCases = async () => {
     return newVal.split(",").map(e => e.trim())
 
   })
-
-
 }
 
 const cases = await readUmeTestCases();
@@ -36,11 +34,13 @@ describe("Loading Under-wite-Me Test data", async () => {
 
 cases.forEach((test, i) => {
   const umeApi = new UMeApi(test)
+  const testNumber = i + 1;
+  const testName = test[_Config.nameField][0]
 
-  describe("Test case #" + (i + 1) + ": " + test[_Config.nameField][0].toLowerCase(), async () => {
+  describe(`Test No. ${testNumber}: ${testName}`, async () => {
 
     if (_Config.debug) {
-      it("SENDING START ENQUIRY CALL", async () => {
+      it("STARTING NEW ENQUIRY", async () => {
         const response = await umeApi.startEnquiry()
         assert.equal(response, STATUS.OK)
       })

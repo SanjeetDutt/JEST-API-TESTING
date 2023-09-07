@@ -79,9 +79,9 @@ export default class UMeApi extends Api {
 
     try {
       const r = await super.get({ url, headers })
-      const bucket = r.snapshots[0].enquiry.buckets.find(bucket => bucket.name === _Config.decisionBucketName)
+      const buckets = r.snapshots[0].enquiry.buckets
 
-      if (this.UMe.isExpectedResult(bucket.max.value))
+      if (this.UMe.isExpectedResults(buckets))
         return STATUS.OK
 
       return STATUS.ERROR

@@ -12,11 +12,15 @@ export class UMe {
     this.enquiryAnswer = {}
     this.enquiryId = null
 
+    this.name = data[_Config.nameField]
     _Config.startEnquiryFields.forEach(e => this.startEnquiryAnswer[e] = data[e])
     _Config.commonEnquiryFields.forEach(e => this.enquiryAnswer[e] = data[e])
 
-    this.expectedResult = data[_Config.resultField][0]
-    this.name = data[_Config.nameField]
+    this.expectedResult = {}
+
+    _Config.decisionColumns.forEach(key => {
+      this.expectedResult[key] = data[key][0]
+    })
   }
 
   getStartEnquiryAnswer() {
@@ -31,7 +35,33 @@ export class UMe {
     this.enquiryId = enquiryId
   }
 
-  isExpectedResult(result) {
-    return result === this.expectedResult
+  isExpectedResults(buckets) {
+
+    let result = true;
+
+    Object.keys(this.expectedResult).forEach(key => {
+      if (result) {
+        const bucket = buckets.find(e => e.name === key)
+
+        if (!bucket) {
+          console.error("Bucket not found with name : " + key + "😞");
+          return
+        }
+
+        const bucketValue = bucket.max.value
+
+        if (bucketValue !== this.expectedResult[key]) {
+          result = false
+          console.error("Bucket check failed for " + key + ". Found " + bucketValue + " and expected " + this.expectedResult[key] + "😿 💔");
+        } else {
+          const bold = "font-weight: bold";
+          const normal = "font-weight: normal";
+          console.log("Testing success for %c" + key + "%c 🎉", bold, normal);
+        }
+
+      }
+    })
+
+    return result
   }
 }
