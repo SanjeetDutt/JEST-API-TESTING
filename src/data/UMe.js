@@ -1,4 +1,6 @@
+import { STATUS } from "../Api.js"
 import _Config from "../_Config.js"
+import { EnquiryResult } from "./EnquiryResult.js"
 
 export class UMe {
 
@@ -16,14 +18,23 @@ export class UMe {
     _Config.startEnquiryFields.forEach(e => data[e] && (this.startEnquiryAnswer[e] = data[e]))
     _Config.commonEnquiryFields.forEach(e => data[e] && (this.enquiryAnswer[e] = data[e]))
 
-    this.expectedResult = {}
+    this.expectedResult = _Config.decisionColumns.map(col => {
 
-    _Config.decisionColumns.forEach(key => {
-      if (data[key] && data[key].length > 0) {
-        this.expectedResult[key] = data[key][0]
+      const evaluate = {}
+
+      Object.keys(col.evaluate).forEach(key => {
+        const val = col.evaluate[key]
+
+        if (data[val])
+          evaluate[key] = data[val][0]
+      })
+
+      return {
+        bucket: col.bucket,
+        evaluate
       }
-
     })
+
   }
 
   getStartEnquiryAnswer() {
@@ -36,6 +47,46 @@ export class UMe {
 
   setEnquiryId(enquiryId) {
     this.enquiryId = enquiryId
+  }
+
+  generateEnquiryResultArray(buckets) {
+
+    const results = []
+
+    this.expectedResult.forEach(expectation => {
+      const bucketName = expectation.bucket
+
+      const umeBucket = buckets.find(b => b.name === bucketName)
+
+      if (!umeBucket) {
+        console.error(`Bucket not found ${bucketName}`)
+        return
+      }
+
+      Object.keys(expectation.evaluate).forEach(sourceName => {
+
+        const exp = expectation.evaluate[sourceName]
+
+        let value = "!!CONTRIBUTION_NOT_FOUND!!";
+
+        if (sourceName === "_result") {
+          value = umeBucket.max.value
+        } else {
+          const contribObj = umeBucket.contributions.find(obj => obj.sources.includes(sourceName))
+          if (contribObj) {
+            value = contribObj.value
+          }
+        }
+
+        results.push(
+          new EnquiryResult({ bucketName, sourceName, value, expectation: exp })
+        )
+
+      })
+    })
+
+    return results
+
   }
 
   isExpectedResults(buckets) {

@@ -3,7 +3,7 @@ export default {
   muleSoftHostAddress: "https://dev.us1.api.pacificlife.com/wbd/eoi/v1",
   umeProxy: "ume/v4",
   umeBranch: "PLGroupBen",
-  umeTag: "EOI_v12",
+  umeTag: "EOI_v13",
   umeLocale: "EN_US",
   umeUsername: "TESTING",
 
@@ -11,7 +11,18 @@ export default {
   nameField: "NAME",
   startEnquiryFields: ["SOURCE", "PRODUCT", "BenefitAmount", "ElectedBenefitAmount", "GENDER", "BIRTHDATE", "POLICY_SITUS"],
   commonEnquiryFields: ["CITIZENSHIP", "HEIGHT_FEET", "HEIGHT_INCHES", "WEIGHT_MALE", "TOBACCO", "LAST_5_DRIVING", "LAST_10_DRIVING", "LAST_5_TREATMENT", "LAST_2_PROCEDURE", "LAST_10_DRUG_USE", "LAST_10_ALCOHOL", "LAST_10_HIV", "LAST_10_HIV_FL", "LAST_10_HEART", "LAST_10_CANCER", "LAST_10_ENDO", "LAST_10_GITRACT", "LAST_10_GENITO_MALE", "LAST_10_RESPIRATORY", "LAST_10_CNS", "LAST_10_MENTAL_HEALTH", "LAST_10_IMMUNE"],
-  decisionColumns: ["DECISION_LIFE", "EVIDENCE_LIFE", "UW_VOLUME_LIFE", "TEST1", "TEST2"],
+  decisionColumns: [
+    {
+      bucket: "DECISION_LIFE",
+      evaluate: {
+        _result: "DECISION_LIFE",
+        Non_Medical_Limits:"Non_Medical_Limits",
+        Last2_Procedure:"Last2_Procedure",
+        
+
+      }
+    }
+  ], // ["DECISION_LIFE", "EVIDENCE_LIFE", "UW_VOLUME_LIFE"],
 
   debug: true,
   showRequest: false,

@@ -128,17 +128,20 @@ export default class UMeApi extends Api {
       const r = await super.get({ url, headers })
       reporting.addResponse(r)
       const buckets = r.snapshots[0].enquiry.buckets
-      reporting.addReport("Bucket", this.parseBucketToReport(buckets))
+      reporting.addReport("Bucket Outcome", this.parseBucketToReport(buckets))
+      const resultArray = this.UMe.generateEnquiryResultArray(buckets)
+      // reporting.addReport("Evaluation Result", this.parseEvaluationResult(resultArray))
+      return resultArray
 
-      if (this.UMe.isExpectedResults(buckets))
-        return STATUS.OK
-
-      return STATUS.ERROR
     } catch (e) {
       console.error("ENCOUNTER AN ERROR WHILE GETTING ENQUIRY HISTORY", e);
       return STATUS.ERROR
     }
 
+  }
+
+  parseEvaluationResult(resultArray) {
+    return resultArray.map(r => `${r.bucketName}->${r.sourceName}:[Expecting:${r.expectation}][GETTING:${r.value}]`)
   }
 
   async completeEnquiry(reporting) {

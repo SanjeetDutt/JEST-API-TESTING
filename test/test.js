@@ -64,11 +64,25 @@ cases.forEach((test, i) => {
       })
 
       it("EVALUATING ENQUIRY RESULT", async function () {
+
+        // Getting enquiry result
         const reporting = new Report(addContext, this)
-        const response = await umeApi.enquiryResult(reporting)
+        const enquiryResults = await umeApi.enquiryResult(reporting)
+        const failedAssertions = []
+        // Evaluating each result
+        enquiryResults.forEach(result => {
+          const evaluationReport = result.evaluate(reporting)
+          if (evaluationReport === STATUS.ERROR)
+            failedAssertions.push(result.generateMessageText())
+        })
+        reporting.addReport("Failing Reason", failedAssertions)
         reporting.publishReport()
-        assert.equal(response, STATUS.OK)
+
+        assert.deepEqual(failedAssertions, [], `Found ${failedAssertions.length} error while testing. See report for more details`)
+
+
       })
+
     } else {
       it("TESTING TEST CASE #" + (i + 1), async function () {
         const reporting = new Report(addContext, this, "Testing Enquiry")
