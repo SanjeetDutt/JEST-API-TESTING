@@ -25,7 +25,7 @@ export class UMe {
       Object.keys(col.evaluate).forEach(key => {
         const val = col.evaluate[key]
 
-        if (data[val])
+        if (data[val] && data[val][0] && data[val][0].trim() !== "")
           evaluate[key] = data[val][0]
       })
 

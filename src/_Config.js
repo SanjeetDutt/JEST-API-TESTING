@@ -15,14 +15,19 @@ export default {
     {
       bucket: "DECISION_LIFE",
       evaluate: {
-        _result: "DECISION_LIFE",
-        Non_Medical_Limits:"Non_Medical_Limits",
-        Last2_Procedure:"Last2_Procedure",
-        
-
+        _result: "DECISION_LIFE_COL",
+        Non_Medical_Limits: "Non_Medical_Limits_COL",
+        Last2_Procedure: "Last2_Procedure"
+      }
+    },
+    {
+      bucket: "EVIDENCE_LIFE",
+      evaluate: {
+        _result: "EVIDENCE_LIFE",
+        Last10_MentalHealth: "Last10_MentalHealth"
       }
     }
-  ], // ["DECISION_LIFE", "EVIDENCE_LIFE", "UW_VOLUME_LIFE"],
+  ],
 
   debug: true,
   showRequest: false,

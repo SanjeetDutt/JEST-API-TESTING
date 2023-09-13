@@ -69,13 +69,17 @@ cases.forEach((test, i) => {
         const reporting = new Report(addContext, this)
         const enquiryResults = await umeApi.enquiryResult(reporting)
         const failedAssertions = []
+        const successAssertions = []
         // Evaluating each result
         enquiryResults.forEach(result => {
           const evaluationReport = result.evaluate(reporting)
           if (evaluationReport === STATUS.ERROR)
             failedAssertions.push(result.generateMessageText())
+          else
+            successAssertions.push(result.generateMessageText())
         })
         reporting.addReport("Failing Reason", failedAssertions)
+        reporting.addReport("Success Report", successAssertions)
         reporting.publishReport()
 
         assert.deepEqual(failedAssertions, [], `Found ${failedAssertions.length} error while testing. See report for more details`)
