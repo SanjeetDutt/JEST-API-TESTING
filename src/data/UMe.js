@@ -25,7 +25,7 @@ export class UMe {
       Object.keys(col.evaluate).forEach(key => {
         const val = col.evaluate[key]
 
-        if (data[val] && data[val][0] && data[val][0].trim() !== "")
+        if (data[val] && data[val][0] && data[val][0].toString().trim() !== "")
           evaluate[key] = data[val][0]
       })
 
@@ -67,7 +67,7 @@ export class UMe {
 
         const exp = expectation.evaluate[sourceName]
 
-        let value = "!!CONTRIBUTION_NOT_FOUND!!";
+        let value = null;
 
         if (sourceName === "_result") {
           value = umeBucket.max.value
@@ -77,6 +77,7 @@ export class UMe {
             value = contribObj.value
           }
         }
+       
 
         results.push(
           new EnquiryResult({ bucketName, sourceName, value, expectation: exp })

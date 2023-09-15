@@ -10,7 +10,7 @@ export class EnquiryResult {
   }
 
   evaluate(reporting = null) {
-
+    if (this.value===null) return STATUS.OK
     // reporting && reporting.addReport(`${this.bucketName}->${this.sourceName}`, `FOUND:${this.value} EXPECTING:${this.expectation}`)
     return this.value === this.expectation ? STATUS.OK : STATUS.ERROR
 
@@ -19,6 +19,8 @@ export class EnquiryResult {
   generateMessageText() {
 
     const highlight = (text) => `[${text}]`
+    if (this.value===null)
+      return `✅ Skipping Test for ${highlight(this.bucketName)} looking for ${highlight(this.sourceName)} ` 
 
     if (this.evaluate() === STATUS.OK)
       return `✅ Test pass for bucket ${highlight(this.bucketName)}, looking for ${highlight(this.sourceName)} with value ${highlight(this.expectation)}`

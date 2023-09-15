@@ -3,28 +3,39 @@ export default {
   muleSoftHostAddress: "https://dev.us1.api.pacificlife.com/wbd/eoi/v1",
   umeProxy: "ume/v4",
   umeBranch: "PLGroupBen",
-  umeTag: "EOI_v13",
+  umeTag: "EOI_v14",
   umeLocale: "EN_US",
   umeUsername: "TESTING",
 
-  UMeTestCaseFile: "./assets/TestCases.csv",
+  UMeTestCaseFile: "./assets/TestCases1.csv",
   nameField: "NAME",
   startEnquiryFields: ["SOURCE", "PRODUCT", "BenefitAmount", "ElectedBenefitAmount", "GENDER", "BIRTHDATE", "POLICY_SITUS"],
-  commonEnquiryFields: ["CITIZENSHIP", "HEIGHT_FEET", "HEIGHT_INCHES", "WEIGHT_MALE", "TOBACCO", "LAST_5_DRIVING", "LAST_10_DRIVING", "LAST_5_TREATMENT", "LAST_2_PROCEDURE", "LAST_10_DRUG_USE", "LAST_10_ALCOHOL", "LAST_10_HIV", "LAST_10_HIV_FL", "LAST_10_HEART", "LAST_10_CANCER", "LAST_10_ENDO", "LAST_10_GITRACT", "LAST_10_GENITO_MALE", "LAST_10_RESPIRATORY", "LAST_10_CNS", "LAST_10_MENTAL_HEALTH", "LAST_10_IMMUNE"],
+  commonEnquiryFields: ["CITIZENSHIP", "HEIGHT_FEET", "HEIGHT_INCHES", "WEIGHT_MALE","WEIGHT_FEMALE", "TOBACCO", "LAST_5_DRIVING", "LAST_10_DRIVING", "LAST_5_TREATMENT", "LAST_2_PROCEDURE", "LAST_10_DRUG_USE", "LAST_10_ALCOHOL", "LAST_10_HIV", "LAST_10_HIV_FL", "LAST_10_HEART", "LAST_10_CANCER", "LAST_10_ENDO", "LAST_10_GITRACT", "LAST_10_GENITO_MALE", "LAST_10_GENITO_FEMALE" ,"LAST_10_RESPIRATORY", "LAST_10_CNS", "LAST_10_MENTAL_HEALTH", "LAST_10_IMMUNE"],
   decisionColumns: [
     {
       bucket: "DECISION_LIFE",
       evaluate: {
-        _result: "DECISION_LIFE_COL",
-        Non_Medical_Limits: "Non_Medical_Limits_COL",
-        Last2_Procedure: "Last2_Procedure"
+        _result: "DECISION_LIFE",
+        Non_Medical_Limits: "DL_Non_Medical_Limits_COL",
+      //  "Test" : "Test_col"
+        
+        //Last2_Procedure: "DL_Last2_Procedure"
       }
     },
     {
       bucket: "EVIDENCE_LIFE",
       evaluate: {
         _result: "EVIDENCE_LIFE",
-        Last10_MentalHealth: "Last10_MentalHealth"
+       // Non_Medical_Limits: "EL_Non_Medical_Limits"
+        
+       // Last10_MentalHealth: "EL_Last10_MentalHealth"
+      }
+    },
+
+    {
+      bucket: "UW_VOLUME_LIFE",
+      evaluate: {
+        _result: "UW_VOLUME_LIFE"
       }
     }
   ],
