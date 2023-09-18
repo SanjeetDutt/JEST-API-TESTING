@@ -9,6 +9,7 @@ export default {
 
   UMeTestCaseFile: "./assets/TestCases1.csv",
   nameField: "NAME",
+  enquiryId:"123",
   startEnquiryFields: ["SOURCE", "PRODUCT", "BenefitAmount", "ElectedBenefitAmount", "GENDER", "BIRTHDATE", "POLICY_SITUS"],
   commonEnquiryFields: ["CITIZENSHIP", "HEIGHT_FEET", "HEIGHT_INCHES", "WEIGHT_MALE","WEIGHT_FEMALE", "TOBACCO", "LAST_5_DRIVING", "LAST_10_DRIVING", "LAST_5_TREATMENT", "LAST_2_PROCEDURE", "LAST_10_DRUG_USE", "LAST_10_ALCOHOL", "LAST_10_HIV", "LAST_10_HIV_FL", "LAST_10_HEART", "LAST_10_CANCER", "LAST_10_ENDO", "LAST_10_GITRACT", "LAST_10_GENITO_MALE", "LAST_10_GENITO_FEMALE" ,"LAST_10_RESPIRATORY", "LAST_10_CNS", "LAST_10_MENTAL_HEALTH", "LAST_10_IMMUNE"],
   decisionColumns: [
