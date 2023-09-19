@@ -76,9 +76,17 @@ export default class UMeApi extends Api {
             },
             locale: _Config.umeLocale,
             username: _Config.umeUsername,
-            debug: true
+            debug: true,
+            "saveEnquiry": true,
+            "date": "2023-09-12T13:37:27Z",
+            "collationStrategy": "BREADTH_FIRST_ORDER",
+            "enquiryId": this.UMe.enquiryId,
+            "forceWrapUp": false,
+            "embedDefinitions": false
         }
         reporting.addRequest(body)
+
+        console.log(JSON.stringify(body));
 
         try {
             const r = await super.post({ url, headers, body })
@@ -97,9 +105,19 @@ export default class UMeApi extends Api {
         const url = super.buildURL([_Config.muleSoftHostAddress, _Config.umeProxy, "closeEnquiry", enquiryId], umeCommonQuery)
         const headers = super.buildJsonHeader()
 
-        reporting.addRequest({})
+        const body = {
+            "embedDefinitions": false,
+            "tryClose": true,
+            "username": "email|6501c93eda1617bd4ed4d84f",
+            "enquiryId": this.UMe.enquiryId,
+            "debug": false,
+            "collationStrategy": "BREADTH_FIRST_ORDER",
+            "date": "2023-09-12T13:37:27Z"
+        }
+
+        reporting.addRequest(body)
         try {
-            const r = await super.post({ url, headers })
+            const r = await super.post({ url, headers, body })
             reporting.addResponse(r)
             const error = this.seekValidationError(reporting, r, "Enquiry closed successfully")
             return !!error ? STATUS.ERROR : STATUS.OK
