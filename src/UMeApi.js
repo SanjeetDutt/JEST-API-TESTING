@@ -149,6 +149,7 @@ export default class UMeApi extends Api {
             const r = await super.get({ url, headers })
             reporting.addResponse(r)
             const snapshotId = r.snapshots.length - 1
+            // Snapshot 
             reporting.addReport("Snapshot ID " , r.snapshots.length  )
             const buckets = r.snapshots[snapshotId].enquiry.buckets
             reporting.addReport("Bucket Outcome", this.parseBucketToReport(buckets))
