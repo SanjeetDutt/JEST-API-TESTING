@@ -86,8 +86,6 @@ export default class UMeApi extends Api {
         }
         reporting.addRequest(body)
 
-        console.log(JSON.stringify(body));
-
         try {
             const r = await super.post({ url, headers, body })
             reporting.addResponse(r)
@@ -107,7 +105,7 @@ export default class UMeApi extends Api {
 
         const body = {
             "embedDefinitions": false,
-            "tryClose": true,
+            "tryClose": false,
             "username": "email|6501c93eda1617bd4ed4d84f",
             "enquiryId": this.UMe.enquiryId,
             "debug": false,
