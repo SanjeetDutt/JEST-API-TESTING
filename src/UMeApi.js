@@ -12,10 +12,11 @@ export default class UMeApi extends Api {
         this.UMe = new UMe(csvRow, csvRow[_Config.ResultColumnName])
     }
 
-    async startEnquiry(reporting) {
-        const url = super.buildURL([_Config.muleSoftHostAddress, _Config.umeProxy, "startEnquiry"], umeBranchQuery)
-        const headers = super.buildJsonHeader()
-        const startEnquiryAnswer = this.UMe.getStartEnquiryAnswer()
+  async startEnquiry(reporting) {
+    const url = super.buildURL([_Config.muleSoftHostAddress, _Config.umeProxy, "startEnquiry"], umeBranchQuery)
+    const headers = super.buildJsonHeader()
+    console.log(url)
+    const startEnquiryAnswer = this.UMe.getStartEnquiryAnswer()
 
         const body = {
             answers: {
@@ -118,22 +119,25 @@ export default class UMeApi extends Api {
             return values.join(", ")
         }
 
-        buckets.forEach(bucket => {
-            result[`${bucket.name} : ${bucketPrint(bucket)}`] = bucket.contributions.map(contribution => {
-                return `${contribution.sources[0]} : ${contribution.value}`
-            })
-
+  parseBucketToReport(buckets) {
+    const result = {}
+    const bucketPrint = (bucket) => {
+        const values = []
+        Object.keys(bucket).forEach(key => {
+          if (["contributions","type","name"].includes(key))
+                return
+            values.push(`${key}=${bucket[key].value}`)
         })
-
-        return result
+        return values.join(", ")
     }
-
-    async enquiryResult(reporting) {
-
-        const enquiryId = this.UMe.enquiryId
-        const url = super.buildURL([_Config.muleSoftHostAddress, _Config.umeProxy, "enquiry/history", enquiryId], umeCommonQuery)
-        const headers = super.buildJsonHeader()
-        reporting.addRequest({})
+    buckets.forEach(bucket => {
+        result[`${bucket.name} : ${bucketPrint(bucket)}`] = bucket.contributions.map(contribution => {
+            return `${contribution.sources[0]} : ${contribution.value}`
+        })
+    })
+    return result
+}
+  async enquiryResult(reporting) {
 
         try {
             const r = await super.get({ url, headers })

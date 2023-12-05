@@ -69,19 +69,28 @@ export class UMe {
 
                 let value = null;
 
-                if (sourceName.startsWith("_")) {
-                    // Search in bucket
-                    const key = sourceName.replace("_", "")
-                    if (umeBucket[key]) {
-                        value = umeBucket[key].value
-                    }
-                } else {
-                    // Search in the contributions
-                    const contribObj = umeBucket.contributions.find(obj => obj.sources.includes(sourceName))
-                    if (contribObj) {
-                        value = contribObj.value
-                    }
-                }
+        // if (sourceName === "_result") {
+        //   value = umeBucket.max.value
+        // } else {
+        //   const contribObj = umeBucket.contributions.find(obj => obj.sources.includes(sourceName))
+        //   if (contribObj) {
+        //     value = contribObj.value
+        //   }
+        // }
+        if (sourceName.startsWith("_")) {
+          // Search in bucket
+          const key = sourceName.replace("_", "")
+          if (umeBucket[key]) {
+              value = umeBucket[key].value
+          }
+      } else {
+          // Search in the contributions
+          const contribObj = umeBucket.contributions.find(obj => obj.sources.includes(sourceName))
+          if (contribObj) {
+              value = contribObj.value
+          }
+      }
+       
 
                 results.push(
                     new EnquiryResult({ bucketName, sourceName, value, expectation: exp })
