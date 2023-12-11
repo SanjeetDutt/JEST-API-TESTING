@@ -4,6 +4,7 @@ export default {
   //https://uat.us1.api.pacificlife.net/wbd/eoi/v1
  // https://qa.us1.api.pacificlife.com/wbd/eoi/v1/ume/enquiry
  //https://dev.us1.api.pacificlife.net/wbd/eoi/v1
+ // Test comment 
   umeProxy: "ume/v4",
   umeBranch: "PLGroupBen",
   umeTag: "EOI_v18_GenderOther",
