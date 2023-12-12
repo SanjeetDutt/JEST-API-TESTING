@@ -38,10 +38,19 @@ cases.forEach((test, i) => {
   const umeApi = new UMeApi(test)
   const testNumber = i + 1;
   const testName = test[_Config.nameField][0]
+  const DELAY_BETWEEN_TEST_CASES = 500;
 
   describe(`Test No. ${testNumber}: ${testName}`, async () => {
 
     if (_Config.debug) {
+
+      beforeEach(function (done) {
+        // Pause for a specific duration before each test case
+        setTimeout(done, DELAY_BETWEEN_TEST_CASES);
+        console.log(done);
+      });
+
+
       it("STARTING NEW ENQUIRY", async function () {
         const reporting = new Report(addContext, this)
         const response = await umeApi.startEnquiry(reporting)
@@ -86,6 +95,8 @@ cases.forEach((test, i) => {
 
 
       })
+
+      
 
     } else {
       it("TESTING TEST CASE #" + (i + 1), async function () {
