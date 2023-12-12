@@ -10,6 +10,7 @@ export default class UMeApi extends Api {
   constructor(csvRow) {
     super()
     this.UMe = new UMe(csvRow, csvRow[_Config.ResultColumnName])
+    this.username=_Config.umeUsername+ Math.random()
   }
 
   async startEnquiry(reporting) {
@@ -21,7 +22,9 @@ export default class UMeApi extends Api {
     const body = {
       answers: {
         ...startEnquiryAnswer
-      }, username: _Config.umeUsername
+      }, username: this.username
+
+      
     }
 
     reporting.addRequest(body)
@@ -71,9 +74,17 @@ export default class UMeApi extends Api {
         ...answers
       },
       locale: _Config.umeLocale,
-      username: _Config.umeUsername,
-      debug: true
+      username: this.username,
+      debug: true,
+      collationStrategy: "BREADTH_FIRST_ORDER",
+      embedDefinitions: true,
+      enquiryId: enquiryId,
+      forceWrapUp: false,
+      saveEnquiry: true,
+      date: "2023-12-11T16:14:01.781-06:00"
+
     }
+    
     reporting.addRequest(body)
 
     try {
@@ -92,10 +103,19 @@ export default class UMeApi extends Api {
     const enquiryId = this.UMe.enquiryId
     const url = super.buildURL([_Config.muleSoftHostAddress, _Config.umeProxy, "closeEnquiry", enquiryId], umeCommonQuery)
     const headers = super.buildJsonHeader()
+    const body={
+      username: this.username,
+      debug: true,
+      collationStrategy: "BREADTH_FIRST_ORDER",
+      embedDefinitions: true,
+      enquiryId: enquiryId,
+      date: "2023-12-11T16:14:01.781-06:00",
+      tryClose:true
+    }
 
     reporting.addRequest({})
     try {
-      const r = await super.post({ url, headers })
+      const r = await super.post({ url, headers, body })
       reporting.addResponse(r)
       const error = this.seekValidationError(reporting, r, "Enquiry closed successfully")
       return !!error ? STATUS.ERROR : STATUS.OK

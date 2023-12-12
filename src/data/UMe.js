@@ -16,7 +16,7 @@ export class UMe {
 
         this.name = data[_Config.nameField]
         _Config.startEnquiryFields.forEach(e => data[e] && (this.startEnquiryAnswer[e] = data[e].map(f=>f.toString())))
-        _Config.commonEnquiryFields.forEach(e => data[e] && (this.enquiryAnswer[e] = data[e]))
+        _Config.commonEnquiryFields.forEach(e => data[e] && (this.enquiryAnswer[e] = data[e].map(f=>f.toString())))
 
         this.expectedResult = _Config.decisionColumns.map(col => {
 
