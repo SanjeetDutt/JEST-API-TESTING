@@ -10,8 +10,13 @@ export class Api {
 
   constructor() { }
 
-  getAuthenticationToken() {
-    return Config.jwt;
+  getJWTAuthenticationToken() {
+    return  "Bearer " + Config.jwt;
+  }
+
+  getBasicAuthenticationToken()
+  {
+    return "Basic " + btoa(`${Config.username}:${Config.password}`)
   }
 
   buildJsonHeader(isAuth = true) {
@@ -21,7 +26,7 @@ export class Api {
     header["Accept"] = "*/*"
 
     if (!!isAuth) {
-      header["Authorization"] = "Bearer " + this.getAuthenticationToken()
+      header["Authorization"] = this.getBasicAuthenticationToken()
     }
 
     return header
