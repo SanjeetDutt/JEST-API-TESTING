@@ -10,7 +10,7 @@ export default class UMeApi extends Api {
   constructor(csvRow) {
     super()
     this.UMe = new UMe(csvRow, csvRow[_Config.ResultColumnName])
-    this.username=_Config.umeUsername+ Math.random()
+    this.username = _Config.umeUsername + Math.random()
   }
 
   async startEnquiry(reporting) {
@@ -24,7 +24,7 @@ export default class UMeApi extends Api {
         ...startEnquiryAnswer
       }, username: this.username
 
-      
+
     }
 
     reporting.addRequest(body)
@@ -66,6 +66,7 @@ export default class UMeApi extends Api {
 
   async postEnquiry(reporting) {
     const enquiryId = this.UMe.enquiryId
+    console.log(enquiryId)
     const url = super.buildURL([_Config.muleSoftHostAddress, _Config.umeProxy, "enquiry", enquiryId], umeCommonQuery)
     const headers = super.buildJsonHeader()
     const answers = this.UMe.getEnquiryAnswer()
@@ -84,7 +85,7 @@ export default class UMeApi extends Api {
       date: "2023-12-11T16:14:01.781-06:00"
 
     }
-    
+
     reporting.addRequest(body)
 
     try {
@@ -103,14 +104,14 @@ export default class UMeApi extends Api {
     const enquiryId = this.UMe.enquiryId
     const url = super.buildURL([_Config.muleSoftHostAddress, _Config.umeProxy, "closeEnquiry", enquiryId], umeCommonQuery)
     const headers = super.buildJsonHeader()
-    const body={
+    const body = {
       username: this.username,
       debug: true,
       collationStrategy: "BREADTH_FIRST_ORDER",
       embedDefinitions: true,
       enquiryId: enquiryId,
       date: "2023-12-11T16:14:01.781-06:00",
-      tryClose:true
+      tryClose: true
     }
 
     reporting.addRequest({})
@@ -128,21 +129,21 @@ export default class UMeApi extends Api {
   parseBucketToReport(buckets) {
     const result = {}
     const bucketPrint = (bucket) => {
-        const values = []
-        Object.keys(bucket).forEach(key => {
-          if (["contributions","type","name"].includes(key))
-                return
-            values.push(`${key}=${bucket[key].value}`)
-        })
-        return values.join(", ")
+      const values = []
+      Object.keys(bucket).forEach(key => {
+        if (["contributions", "type", "name"].includes(key))
+          return
+        values.push(`${key}=${bucket[key].value}`)
+      })
+      return values.join(", ")
     }
     buckets.forEach(bucket => {
-        result[`${bucket.name} : ${bucketPrint(bucket)}`] = bucket.contributions.map(contribution => {
-            return `${contribution.sources[0]} : ${contribution.value}`
-        })
+      result[`${bucket.name} : ${bucketPrint(bucket)}`] = bucket.contributions.map(contribution => {
+        return `${contribution.sources[0]} : ${contribution.value}`
+      })
     })
     return result
-}
+  }
   async enquiryResult(reporting) {
 
     const enquiryId = this.UMe.enquiryId

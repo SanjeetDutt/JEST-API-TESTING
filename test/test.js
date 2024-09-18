@@ -38,7 +38,7 @@ cases.forEach((test, i) => {
   const umeApi = new UMeApi(test)
   const testNumber = i + 1;
   const testName = test[_Config.nameField][0]
-  const DELAY_BETWEEN_TEST_CASES = 500;
+  const DELAY_BETWEEN_TEST_CASES = 400;
 
   describe(`Test No. ${testNumber}: ${testName}`, async () => {
 
@@ -47,7 +47,7 @@ cases.forEach((test, i) => {
       beforeEach(function (done) {
         // Pause for a specific duration before each test case
         setTimeout(done, DELAY_BETWEEN_TEST_CASES);
-        console.log(done);
+       
       });
 
 
