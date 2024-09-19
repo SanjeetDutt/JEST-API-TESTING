@@ -5,9 +5,9 @@ const WBD_EOI_ENV_CONSTANTS = {
 };
 
 
-export const UME_Branch = ["PLGroupBen", "Lab_Rule_Import"]
+export const UME_Branch = ["PLGroupBen", "Lab_Rule_Import", "DI_Updates_PLGroupBen"]
 
-export const Test_Files = ["BL_VL_MUW_LOGIC.csv", "BMI_VL_Female.csv", "Other_question_VL_logic.csv"]
+export const Test_Files = ["BL_VL_MUW_LOGIC.csv", "BMI_VL_Female.csv", "Other_question_VL_logic.csv", "Disability\MUW_Logic Disability.csv"]
 
 export const Life = {
     Basic_info_question: ["SOURCE", "PRODUCT", "COVERAGE_BASIS", "BASIC_BENEFIT_LIFE", "BASIC_ELECT_BENEFIT_LIFE", "VOL_BENEFIT_LIFE", "VOL_ELECT_BENEFIT_LIFE", "GENDER", "BIRTHDATE", "POLICY_SITUS"],
@@ -18,11 +18,15 @@ export const Life = {
 }
 
 export const Disability = {
-    Basic_info_question: ["SOURCE", "PRODUCT", "COVERAGE_BASIS", "BASIC_BENEFIT_LIFE", "BASIC_ELECT_BENEFIT_LIFE", "VOL_BENEFIT_LIFE", "VOL_ELECT_BENEFIT_LIFE", "GENDER", "BIRTHDATE", "POLICY_SITUS"],
+    Basic_info_question: ["SOURCE", "PRODUCT", "COVERAGE_BASIS_DIB", "STD_BENEFIT_DIB", "STD_ELECT_BENEFIT_DIB", "LTD_BENEFIT_DIB", "LTD_ELECT_BENEFIT_DIB", "GENDER", "BIRTHDATE", "POLICY_SITUS"],
     Other_question: ["CITIZENSHIP", "HEIGHT_FEET", "HEIGHT_INCHES", "WEIGHT_MALE", "WEIGHT_FEMALE",
         "WEIGHT_OTHER", "TOBACCO", "LAST_5_DRIVING", "LAST_10_DRIVING", "LAST_5_TREATMENT", "LAST_2_PROCEDURE",
         "LAST_10_DRUG_USE", "LAST_10_ALCOHOL", "LAST_10_HIV", "LAST_10_HIV_FL", "LAST_10_HEART", "LAST_10_CANCER",
-        "LAST_10_ENDO", "LAST_10_GITRACT", "LAST_10_GENITO_MALE", "LAST_10_GENITO_FEMALE", "LAST_10_GENITO_OTHER", "LAST_10_RESPIRATORY", "LAST_10_CNS", "LAST_10_MENTAL_HEALTH", "LAST_10_IMMUNE"]
+        "LAST_10_ENDO", "LAST_10_GITRACT", "LAST_10_GENITO_MALE", "LAST_10_GENITO_FEMALE", "LAST_10_GENITO_OTHER", "LAST_10_RESPIRATORY", "LAST_10_CNS", "LAST_10_MENTAL_HEALTH", "LAST_10_IMMUNE", "LAST_5_DIS_INS_BEN", "LAST_5_DIS_PAIN_GI_ENT",
+        "LAST_5_DIS_DRIVE", "LAST_5_DIS_MUSCULO", "LAST_5_DIS_WORK"
+
+
+    ]
 }
 
 
