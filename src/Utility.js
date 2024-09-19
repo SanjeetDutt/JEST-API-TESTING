@@ -28,16 +28,16 @@ export const readCsv = async (fileName) => {
   })
 }
 
-export const parseCsvToObject = (csvArray = [[],[]], valueOperation = null)=>{
+export const parseCsvToObject = (csvArray = [[], []], valueOperation = null) => {
 
   const header = csvArray[0]; // First row as header
   const result = []
-  for(let i = 1; i < csvArray.length; i++){
+  for (let i = 1; i < csvArray.length; i++) {
     const obj = {}
-    header.forEach((column,j)=>{
-      if(!!valueOperation){
-        obj[column] = valueOperation( csvArray[i][j] )
-      } else{
+    header.forEach((column, j) => {
+      if (!!valueOperation) {
+        obj[column] = valueOperation(csvArray[i][j])
+      } else {
         obj[column] = csvArray[i][j]
       }
     })

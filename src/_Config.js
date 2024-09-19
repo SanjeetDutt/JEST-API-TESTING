@@ -98,7 +98,7 @@ export default {
 
   ],
 
-  debug: true,
+  debug: false,
   showRequest: true,
   shoeResponse: true,
 
