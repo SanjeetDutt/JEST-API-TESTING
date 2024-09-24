@@ -21,39 +21,39 @@ export const Life = {
             evaluate: {
                 _max: "DECISION_LIFE",
                 //Build: "DL_BUILD",
-                //Non_Medical_Limits: "DL_Non_Medical_Limits_COL",
-                // MVR_Check: "LAST_5_DRIVING/LAST_10_DRIVING/MVR_Check",
-                // Last5_Treatment: "Last5_Treatment",
-                // Last2_Procedure: "Last2_Procedure",
-                // Alcohol_Abuse: "LAST_10_ALCOHOL_Alcohol_Abuse",
-                // Drug_Abuse: "LAST_10_ALCOHOL_Drug_Abuse",
-                // AIDS: "LAST_10_HIV_AIDS",
-                // Nodule: "LAST_10_CANCER_Nodule",
-                // Skin_Cancer: "LAST_10_CANCER_Skin_Cancer",
-                // Melanoma: "LAST_10_CANCER_Melanoma",
-                // Hodgkins_Disease: "LAST_10_CANCER_Hodgkins_Disease",
-                // Leukemia: "LAST_10_CANCER_Leukemia",
-                // Cancer_NOS: "LAST_10_CANCER_Cancer_Cancer_NOS",
-                // Cancer_NOS: "LAST_10_CANCER/Tumor_Cancer_NOS",
-                // Last10_Genito: "LAST_10_GENITO_MALE_Last10_Genito",
-                // Refer_All: "LAST_10_CNS_Refer_All",
-                // Epilepsy: "LAST_10_CNS_Epilepsy",
-                // Amnesia: "LAST_10_CNS_Amnesia",
-                // Sclerosis: "LAST_10_CNS_Multiple_Sclerosis",
-                // Dystrophy: "LAST_10_CNS_Muscular_Dystrophy",
-                // Paralysis: "LAST_10_CNS_Paralysis",
-                // Parkinsons_Disease: "LAST_10_CNS_Parkinsons_Disease",
-                // Tremor: "LAST_10_CNS_Tremor",
-                // Last10_Immune: "LAST_10_IMMUNE_Last10_Immune",
-                // Lupus_Erythematosus: "LAST_10_IMMUNE_Lupus_Erythematosus",
-                // Chronic_Obstructive_Pulmonary_Disease: "LAST_10_RESPIRATORY_Chronic_Obstructive_Pulmonary_Disease",
-                // Emphysema: "LAST_10_RESPIRATORY_Emphysema",
-                // Sleep_Apnoea: "LAST_10_RESPIRATORY_Sleep_Apnoea",
-                // Last10_Resp: "LAST_10_RESPIRATORY_Last10_Resp",
-                // Last10_MentalHealth: "LAST_10_MENTAL_HEALTH_Last10_MentalHealth",
-                // Mental_Illness_Severe: "LAST_10_MENTAL_HEALTH_Mental_Illness_Severe",
-                // Eating_Disorders: "LAST_10_MENTAL_HEALTH_Eating_Disorders"
-                //Last2_Procedure: "DL_Last2_Procedure"
+                Non_Medical_Limits: "DL_Non_Medical_Limits_COL",
+                MVR_Check: "LAST_5_DRIVING/LAST_10_DRIVING/MVR_Check",
+                Last5_Treatment: "Last5_Treatment",
+                Last2_Procedure: "Last2_Procedure",
+                Alcohol_Abuse: "LAST_10_ALCOHOL_Alcohol_Abuse",
+                Drug_Abuse: "LAST_10_ALCOHOL_Drug_Abuse",
+                AIDS: "LAST_10_HIV_AIDS",
+                Nodule: "LAST_10_CANCER_Nodule",
+                Skin_Cancer: "LAST_10_CANCER_Skin_Cancer",
+                Melanoma: "LAST_10_CANCER_Melanoma",
+                Hodgkins_Disease: "LAST_10_CANCER_Hodgkins_Disease",
+                Leukemia: "LAST_10_CANCER_Leukemia",
+                Cancer_NOS: "LAST_10_CANCER_Cancer_Cancer_NOS",
+                Cancer_NOS: "LAST_10_CANCER/Tumor_Cancer_NOS",
+                Last10_Genito: "LAST_10_GENITO_MALE_Last10_Genito",
+                Refer_All: "LAST_10_CNS_Refer_All",
+                Epilepsy: "LAST_10_CNS_Epilepsy",
+                Amnesia: "LAST_10_CNS_Amnesia",
+                Sclerosis: "LAST_10_CNS_Multiple_Sclerosis",
+                Dystrophy: "LAST_10_CNS_Muscular_Dystrophy",
+                Paralysis: "LAST_10_CNS_Paralysis",
+                Parkinsons_Disease: "LAST_10_CNS_Parkinsons_Disease",
+                Tremor: "LAST_10_CNS_Tremor",
+                Last10_Immune: "LAST_10_IMMUNE_Last10_Immune",
+                Lupus_Erythematosus: "LAST_10_IMMUNE_Lupus_Erythematosus",
+                Chronic_Obstructive_Pulmonary_Disease: "LAST_10_RESPIRATORY_Chronic_Obstructive_Pulmonary_Disease",
+                Emphysema: "LAST_10_RESPIRATORY_Emphysema",
+                Sleep_Apnoea: "LAST_10_RESPIRATORY_Sleep_Apnoea",
+                Last10_Resp: "LAST_10_RESPIRATORY_Last10_Resp",
+                Last10_MentalHealth: "LAST_10_MENTAL_HEALTH_Last10_MentalHealth",
+                Mental_Illness_Severe: "LAST_10_MENTAL_HEALTH_Mental_Illness_Severe",
+                Eating_Disorders: "LAST_10_MENTAL_HEALTH_Eating_Disorders",
+
             }
         },
         {
@@ -107,39 +107,115 @@ export const Disability = {
                 _max: "DECISION_DISABILITY",
                 //Build: "DL_BUILD",
                 //Non_Medical_Limits: "DL_Non_Medical_Limits_COL",
-                // MVR_Check: "LAST_5_DRIVING/LAST_10_DRIVING/MVR_Check",
-                // Last5_Treatment: "Last5_Treatment",
-                // Last2_Procedure: "Last2_Procedure",
-                // Alcohol_Abuse: "LAST_10_ALCOHOL_Alcohol_Abuse",
-                // Drug_Abuse: "LAST_10_ALCOHOL_Drug_Abuse",
-                // AIDS: "LAST_10_HIV_AIDS",
-                // Nodule: "LAST_10_CANCER_Nodule",
-                // Skin_Cancer: "LAST_10_CANCER_Skin_Cancer",
-                // Melanoma: "LAST_10_CANCER_Melanoma",
-                // Hodgkins_Disease: "LAST_10_CANCER_Hodgkins_Disease",
-                // Leukemia: "LAST_10_CANCER_Leukemia",
-                // Cancer_NOS: "LAST_10_CANCER_Cancer_Cancer_NOS",
-                // Cancer_NOS: "LAST_10_CANCER/Tumor_Cancer_NOS",
-                // Last10_Genito: "LAST_10_GENITO_MALE_Last10_Genito",
-                // Refer_All: "LAST_10_CNS_Refer_All",
-                // Epilepsy: "LAST_10_CNS_Epilepsy",
-                // Amnesia: "LAST_10_CNS_Amnesia",
-                // Sclerosis: "LAST_10_CNS_Multiple_Sclerosis",
-                // Dystrophy: "LAST_10_CNS_Muscular_Dystrophy",
-                // Paralysis: "LAST_10_CNS_Paralysis",
-                // Parkinsons_Disease: "LAST_10_CNS_Parkinsons_Disease",
-                // Tremor: "LAST_10_CNS_Tremor",
-                // Last10_Immune: "LAST_10_IMMUNE_Last10_Immune",
-                // Lupus_Erythematosus: "LAST_10_IMMUNE_Lupus_Erythematosus",
-                // Chronic_Obstructive_Pulmonary_Disease: "LAST_10_RESPIRATORY_Chronic_Obstructive_Pulmonary_Disease",
-                // Emphysema: "LAST_10_RESPIRATORY_Emphysema",
-                // Sleep_Apnoea: "LAST_10_RESPIRATORY_Sleep_Apnoea",
-                // Last10_Resp: "LAST_10_RESPIRATORY_Last10_Resp",
-                // Last10_MentalHealth: "LAST_10_MENTAL_HEALTH_Last10_MentalHealth",
-                // Mental_Illness_Severe: "LAST_10_MENTAL_HEALTH_Mental_Illness_Severe",
-                // Eating_Disorders: "LAST_10_MENTAL_HEALTH_Eating_Disorders"
-                //Last2_Procedure: "DL_Last2_Procedure"
-            }
+
+                //LAST_5/10_Driving
+                MVR_Check: "LAST_5_DRIVING/LAST_10_DRIVING/MVR_Check",
+
+                //LAST_5_DIS_DRIVING
+                Last5_DIS_Driving: "Last5_Dis_Driving",
+
+                //LAST_5_Treatment
+                Last5_Treatment: "Last5_Treatment",
+
+                //LAST_2_Procedure
+                Last2_Procedure: "Last2_Procedure",
+
+                //Last_5_DIS_Musculo
+                Last5_DIS_Musculo: "LAST_5_DIS_MUSCULO_ALL",
+
+                //Last_10_Drug
+                Sedative_Abuse: "LAST_10_DRUG_USE_ALL",
+                Amphetamine_Abuse: "LAST_10_DRUG_USE_ALL",
+                Opiate_Abuse: "LAST_10_DRUG_USE_ALL",
+                Cocaine_Abuse: "LAST_10_DRUG_USE_ALL",
+                Hallucinogen_Abuse: "LAST_10_DRUG_USE_ALL",
+                Drug_Abuse: "LAST_10_DRUG_USE_ALL",
+
+
+                //Last_10_Alchol
+                Alcohol_Abuse: "LAST_10_ALCOHOL_ALL",
+                Drug_Abuse: "LAST_10_ALCOHOL_ALL",
+
+                //Last_10_HID/LAST_10_HIV_FL
+                AIDS: "LAST_10_HIV_AIDS",
+
+
+                //LAST_10_HEART
+                Cardiomyopathy: "LAST_10_HEART_ALL",
+                Chest_Pain: "LAST_10_HEART_ALL",
+                Heart_Failure: "LAST_10_HEART_ALL",
+                Heart_Attack: "LAST_10_HEART_ALL",
+                Angina: "LAST_10_HEART_ALL",
+                Heart_Murmur: "LAST_10_HEART_ALL",
+                Heart_Valve_Disorder: "LAST_10_HEART_ALL",
+                Arrhythmia: "LAST_10_HEART_ALL",
+                Stroke: "LAST_10_HEART_ALL",
+                Hypertension: "LAST_10_HEART_ALL",
+
+                //LAST_10_cancer
+                Nodule: "LAST_10_CANCER_ALL",
+                Skin_Cancer: "LAST_10_CANCER_ALL",
+                Melanoma: "LAST_10_CANCER_ALL",
+                Hodgkins_Disease: "LAST_10_CANCER_ALL",
+                Leukemia: "LAST_10_CANCER_Leukemia",
+                Cancer_NOS: "LAST_10_CANCER_ALL",
+
+                //Last_10_ENDO
+                Diabetes: "LAST_10_ENDO_ALL",
+                Impaired_Glucose: "LAST_10_ENDO_ALL",
+                Blood_Disorder: "LAST_10_ENDO_ALL",
+                Pituitary_Gland_Disease: "LAST_10_ENDO_ALL",
+                Adrenal_Gland_Disorder: "LAST_10_ENDO_ALL",
+
+                // Last10_GITract
+                Hepatitis: "LAST_10_GITRACT_ALL",
+                Cirrhosis_Of_The_Liver: "LAST_10_GITRACT_ALL",
+                Crohns_Disease: "LAST_10_GITRACT_ALL",
+                Ulcerative_Colitis: "LAST_10_GITRACT_ALL",
+                Last10_GITract: "LAST_10_GITRACT_ALL",
+                Refer_All: "LAST_10_GITRACT_ALL",
+
+
+
+                //Last_10_Genito
+                Last10_Genito: "LAST_10_GENITO_MALE_FEMALE_ALL",
+
+
+                //LAST_10_RESPIRATORY
+                Chronic_Obstructive_Pulmonary_Disease: "LAST_10_RESPIRATORY_ALL",
+                Emphysema: "LAST_10_RESPIRATORY_ALL",
+                Sleep_Apnoea: "LAST_10_RESPIRATORY_ALL",
+                Last10_Resp: "LAST_10_RESPIRATORY_ALL",
+
+                //"LAST_10_CNS
+                Refer_All: "LAST_10_CNS_All",
+                Epilepsy: "LAST_10_CNS_All",
+                Amnesia: "LAST_10_CNS_All",
+                Sclerosis: "LAST_10_CNS_All",
+                Dystrophy: "LAST_10_CNS_All",
+                Paralysis: "LAST_10_CNS_All",
+                Parkinsons_Disease: "LAST_10_CNS_All",
+                Tremor: "LAST_10_CNS_All",
+                Muscular_Dystrophy: "LAST_10_CNS_All",
+                Multiple_Sclerosis: "LAST_10_CNS_All",
+
+
+                //"LAST_10_MENTAL_HEALTH
+                Last10_MentalHealth: "LAST_10_MENTAL_HEALTH_ALL",
+                Mental_Illness_Severe: "LAST_10_MENTAL_HEALTH_ALL",
+                Eating_Disorders: "LAST_10_MENTAL_HEALTH_ALL",
+                Mental_Illness_Moderate: "LAST_10_MENTAL_HEALTH_ALL",
+
+                //LAST_10_IMMUNE
+                Last10_Immune: "LAST_10_IMMUNE_ALL",
+                Lupus_Erythematosus: "LAST_10_IMMUNE_ALL",
+
+
+                Last5_DIS_ENTPainGI: "LAST_5_DIS_PAIN_GI_ENT_ALL",
+                Last5_DIS_InsBen: "LAST_5_DIS_INS_BEN_ALL",
+                Last5_DIS_Work: "LAST_5_DIS_WORK_ALL"
+
+            },
         },
         {
             bucket: "EVIDENCE_DISABILITY",
