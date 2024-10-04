@@ -18,8 +18,7 @@ const readUmeTestCases = async () => {
 
     if (val.startsWith('"'))
       newVal = val.substring(1, val.length - 1)
-
-    return newVal.split(",").map(e => e.trim())
+    return newVal.split(",").map(e => e.trim()).map(e => e.replaceAll("^", ","));
 
   })
 }
@@ -38,7 +37,7 @@ cases.forEach((test, i) => {
   const umeApi = new UMeApi(test)
   const testNumber = i + 1;
   const testName = test[_Config.nameField][0]
-  const DELAY_BETWEEN_TEST_CASES = 400;
+  const DELAY_BETWEEN_TEST_CASES = 2000;
 
   describe(`Test No. ${testNumber}: ${testName}`, async () => {
 
@@ -47,7 +46,7 @@ cases.forEach((test, i) => {
       beforeEach(function (done) {
         // Pause for a specific duration before each test case
         setTimeout(done, DELAY_BETWEEN_TEST_CASES);
-       
+
       });
 
 
@@ -96,7 +95,7 @@ cases.forEach((test, i) => {
 
       })
 
-      
+
 
     } else {
       it("TESTING TEST CASE #" + (i + 1), async function () {
