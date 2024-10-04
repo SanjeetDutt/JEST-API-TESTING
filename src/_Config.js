@@ -5,7 +5,7 @@ import { UME_Branch, Test_Files, getFields } from "./utilities/EnvConstant.js"
 
 
 
-const insuranceType = "Disability"
+const insuranceType = "Life_Disability"
 const enquiryFields = getFields(insuranceType)
 console.log(enquiryFields)
 
@@ -22,7 +22,7 @@ export default {
   umeLocale: "EN_US",
   umeUsername: "TESTING",
 
-  UMeTestCaseFile: `./assets/${Test_Files[4]}`,
+  UMeTestCaseFile: `./assets/${Test_Files[2]}`,
 
 
 
