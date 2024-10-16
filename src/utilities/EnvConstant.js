@@ -7,8 +7,9 @@ const WBD_EOI_ENV_CONSTANTS = {
 
 export const UME_Branch = ["PLGroupBen", "Lab_Rule_Import", "DI_Updates_PLGroupBen"]
 
-export const Test_Files = ["Disability/MUW_Logic_Disability.csv", "Disability/Disability_Question_Logic.csv",
-    "Life_Disability/Life_Disability_Question_Logic.csv", "Life_Disability/Life_Disability_MUW.csv", "Disability/Disability_BMI.csv", "Life/Life_BMI.csv"
+export const Test_Files = [
+    "Life_Disability/Life_Disability_Question_Logic.csv", "Life_Disability/Life_Disability_MUW.csv", "Disability/Disability_BMI.csv", "Disability/Disability_MUW.csv", "Disability/Disability_Question_Logic.csv", "Life/Life_BMI.csv",
+    "Life/Life_MUW.csv",
 
 ]
 
@@ -25,7 +26,7 @@ export const Life = {
                 _max: "DECISION_LIFE",
                 Build: "DL_BUILD",
                 Non_Medical_Limits: "DL_Non_Medical_Limits_COL",
-                // MVR_Check: "LAST_5_DRIVING/LAST_10_DRIVING/MVR_Check",
+                // MVR_Check: "Last5_Driving/Last10_Driving/MVR_Check",
                 // Last5_Treatment: "Last5_Treatment",
                 // Last2_Procedure: "Last2_Procedure",
                 // Alcohol_Abuse: "LAST_10_ALCOHOL_Alcohol_Abuse",
@@ -72,8 +73,8 @@ export const Life = {
         {
             bucket: "UW_VOLUME_LIFE",
             evaluate: {
-                //  _sum: "UW_VOLUME_LIFE",
-                _max: "UW_VOLUME_LIFE",
+                _sum: "UW_VOLUME_LIFE",
+                //_max: "UW_VOLUME_LIFE",
                 // _min: "UW_VOLUME_LIFE",
             }
         },
@@ -114,7 +115,7 @@ export const Disability = {
                 DIS_Pregnancy: "DIS_Pregnancy_ALL",
 
                 //LAST_5/10_Driving
-                MVR_Check: "LAST_5_DRIVING/LAST_10_DRIVING/MVR_Check",
+                MVR_Check: "Last5_Driving/Last10_Driving/MVR_Check",
 
                 //LAST_5_DIS_DRIVING
                 Last5_DIS_Driving: "Last5_Dis_Driving",
@@ -248,8 +249,6 @@ export const Disability = {
     ]
 }
 
-
-
 const Life_Disability = {
     Basic_info_question: ["SOURCE", "PRODUCT", "COVERAGE_BASIS_DIB", "STD_BENEFIT_DIB", "STD_ELECT_BENEFIT_DIB", "LTD_BENEFIT_DIB", "LTD_ELECT_BENEFIT_DIB", "COVERAGE_BASIS", "BASIC_BENEFIT_LIFE", "BASIC_ELECT_BENEFIT_LIFE", "VOL_BENEFIT_LIFE", "VOL_ELECT_BENEFIT_LIFE", "GENDER", "BIRTHDATE", "POLICY_SITUS"],
     Other_question: ["CITIZENSHIP", "HEIGHT_FEET", "HEIGHT_INCHES", "WEIGHT_MALE", "WEIGHT_FEMALE",
@@ -270,7 +269,7 @@ const Life_Disability = {
                 DIS_Pregnancy: "DIS_Pregnancy_ALL",
 
                 //LAST_5/10_Driving
-                MVR_Check: "LAST_5_DRIVING/LAST_10_DRIVING/MVR_Check",
+                MVR_Check: "Last5_Driving/Last10_Driving/MVR_Check",
 
                 //LAST_5_DIS_DRIVING
                 Last5_DIS_Driving: "Last5_Dis_Driving",
@@ -339,7 +338,7 @@ const Life_Disability = {
 
 
                 //Last_10_Genito
-                Last10_Genito: "LAST_10_GENITO_MALE_FEMALE_ALL_DIS",
+                Last10_Genito: "LAST_10_GENITO_MALE_FEMALE_OTHER_ALL_DIS",
 
 
                 //LAST_10_RESPIRATORY
@@ -369,7 +368,7 @@ const Life_Disability = {
 
                 //LAST_10_IMMUNE
                 Last10_Immune: "LAST_10_IMMUNE_ALL_DIS",
-                Lupus_Erythematosus: "LAST_10_IMMUNE_ALL",
+                Lupus_Erythematosus: "LAST_10_IMMUNE_ALL_DIS",
 
 
                 Last5_DIS_ENTPainGI: "LAST_5_DIS_PAIN_GI_ENT_ALL",
@@ -409,7 +408,7 @@ const Life_Disability = {
                 Non_Medical_Limits: "DL_Non_Medical_Limits_COL",
 
                 //LAST_5/10_Driving
-                MVR_Check: "LAST_5_DRIVING/LAST_10_DRIVING/MVR_Check",
+                MVR_Check: "Last5_Driving/Last10_Driving/MVR_Check",
 
                 //LAST_5_DIS_DRIVING
                 Last5_DIS_Driving: "Last5_Dis_Driving",
@@ -418,7 +417,7 @@ const Life_Disability = {
                 Last5_Treatment: "Last5_Treatment",
 
                 //LAST_2_Procedure
-                Last2_Procedure: "Last2_Procedure_DIS",
+                Last2_Procedure: "Last2_Procedure_LIFE",
 
                 //Last_5_DIS_Musculo
                 Last5_DIS_Musculo: "LAST_5_DIS_MUSCULO_ALL",
@@ -477,7 +476,7 @@ const Life_Disability = {
 
 
                 //Last_10_Genito
-                Last10_Genito: "LAST_10_GENITO_MALE_FEMALE_ALL_DIS",
+                Last10_Genito: "LAST_10_GENITO_MALE_FEMALE_OTHER_ALL_LIFE",
 
 
                 //LAST_10_RESPIRATORY
@@ -500,14 +499,14 @@ const Life_Disability = {
 
 
                 //"LAST_10_MENTAL_HEALTH
-                Last10_MentalHealth: "LAST_10_MENTAL_HEALTH_ALL_DIS",
-                Mental_Illness_Severe: "LAST_10_MENTAL_HEALTH_ALL_DIS",
-                Eating_Disorders: "LAST_10_MENTAL_HEALTH_ALL_DIS",
-                Mental_Illness_Moderate: "LAST_10_MENTAL_HEALTH_ALL_DIS",
+                Last10_MentalHealth: "LAST_10_MENTAL_HEALTH_ALL_LIFE",
+                Mental_Illness_Severe: "LAST_10_MENTAL_HEALTH_ALL_LIFE",
+                Eating_Disorders: "LAST_10_MENTAL_HEALTH_ALL_LIFE",
+                Mental_Illness_Moderate: "LAST_10_MENTAL_HEALTH_ALL_LIFE",
 
                 //LAST_10_IMMUNE
-                Last10_Immune: "LAST_10_IMMUNE_ALL_DIS",
-                Lupus_Erythematosus: "LAST_10_IMMUNE_ALL",
+                Last10_Immune: "LAST_10_IMMUNE_ALL_LIFE",
+                Lupus_Erythematosus: "LAST_10_IMMUNE_ALL_LIFE",
 
 
             }
